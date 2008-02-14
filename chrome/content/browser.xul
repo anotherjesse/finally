@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="books-overlay">
+  <script type="text/javascript"><![CDATA[ 
+
+    function loadJS() {
+      const loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"]
+                               .getService(Components.interfaces.mozIJSSubScriptLoader);
+
+      var scripts = [
+        "chrome://books/content/browser.js"
+      ];
+
+      for (var i = 0; i < scripts.length; i++) {
+        loader.loadSubScript(scripts[i], window);
+      }
+    }
+
+    window.addEventListener("load", loadJS, false);
+    
+  ]]></script>
+
+
+  <popup id="contentAreaContextMenu">
+    <menuitem id="bb-menu"
+      label="Save this" oncommand="alert('implement me')" />
+  </popup>
+</overlay>

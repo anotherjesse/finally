@@ -1,0 +1,5 @@
+#container {
+  background: url(chrome://books/skin/grid.gif) repeat;
+  overflow: auto;
+}
+
