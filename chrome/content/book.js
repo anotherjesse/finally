@@ -18,6 +18,7 @@ var dnd= {
        if (dropData.flavour.contentType == "text/x-moz-url") {
          var bm = dropData.data.split("\n");
          note.data = {name: bm[1], description: bm[0]};
+         note.className = 'url'
        }
 	   } catch(e) {
 	     console.log(e);

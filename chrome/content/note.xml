@@ -8,7 +8,7 @@
       <xul:hbox>
         <xul:image anonid="image" class="icon" />
         <xul:vbox class="extended">
-          <xul:label value="unnamed" anonid="name" />
+          <xul:label anonid="name" />
           <xul:label anonid="description" />
         </xul:vbox>
       </xul:hbox>
@@ -19,8 +19,10 @@
         <parameter name="attribute" />
         <parameter name="value" />
         <body>
-          document.getAnonymousElementByAttribute(this, 'anonid', anonid)
-                  .setAttribute(attribute, value);
+          if (value) {
+            document.getAnonymousElementByAttribute(this, 'anonid', anonid)
+                    .setAttribute(attribute, value);
+          }
         </body>
       </method>
 

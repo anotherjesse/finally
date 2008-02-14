@@ -15,6 +15,10 @@ note image.icon {
   margin: 4px;
 }
 
+note.url image.icon {
+  list-style-image: url("chrome://books/skin/famfamfam/link.png");
+}
+
 note {
   font-size: 10px;
 }
