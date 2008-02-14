@@ -1,0 +1,32 @@
+note {
+  -moz-binding: url("note.xml#note");
+}
+
+note vbox {
+  max-width: 210px;
+}
+
+note image.icon {
+  list-style-image: url("chrome://books/skin/famfamfam/text_dropcaps.png");
+  min-width: 16px;
+  max-width: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  margin: 4px;
+}
+
+note {
+  font-size: 10px;
+}
+
+note label {
+  max-width: 200px;
+}
+
+note .extended { 
+  display: none;
+}
+
+note:hover .extended {
+  display: inherit;
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<bindings xmlns="http://www.mozilla.org/xbl"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <binding id="note">
+    <content>
+      <xul:hbox>
+        <xul:image anonid="image" class="icon" />
+        <xul:vbox class="extended">
+          <xul:label value="unnamed" anonid="name" />
+          <xul:label anonid="description" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+    <implementation>
+      <method name="set">
+        <parameter name="anonid" />
+        <parameter name="attribute" />
+        <parameter name="value" />
+        <body>
+          document.getAnonymousElementByAttribute(this, 'anonid', anonid)
+                  .setAttribute(attribute, value);
+        </body>
+      </method>
+
+      <property name="data">
+        <setter>
+          this.set('name', 'value', val.name);
+          this.set('description', 'value', val.description);
+        </setter>
+      </property>
+    </implementation>
+  </binding>
+</bindings>
