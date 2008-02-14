@@ -4,7 +4,6 @@ var dnd= {
 	 onDrop: function(event,dropData,asession) {
 	   try {
   	   var note = document.createElement('note');
-  	   $('#container').append(note);
        note.style.position = 'fixed';
        note.style.left = event.clientX-12 + 'px';
        note.style.top = event.clientY-12 + 'px';
@@ -20,6 +19,7 @@ var dnd= {
          note.data = {name: bm[1], description: bm[0]};
          note.className = 'url'
        }
+     	 $('#container').append(note);
 	   } catch(e) {
 	     console.log(e);
 	   }
@@ -30,7 +30,7 @@ var dnd= {
 			var flavors = new FlavourSet();
 			flavors.appendFlavour('text/x-moz-url');
 			flavors.appendFlavour('text/html');
-			flavors.appendFlavour('application/x-moz-file','nsIFile');
+			// flavors.appendFlavour('application/x-moz-file','nsIFile');
 			flavors.appendFlavour('text/unicode');
 			return flavors;
 	 }

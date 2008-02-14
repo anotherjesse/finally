@@ -11,5 +11,7 @@
   <script type="application/x-javascript" src="chrome://browser/content/utilityOverlay.js" /> 
   <script type="application/x-javascript" src="chrome://books/content/jquery-1.2.3.js" />
   <script type="application/x-javascript" src="chrome://books/content/book.js" />
-  <vbox id="container" flex="1" ondragover="nsDragAndDrop.dragOver(event, dnd)" ondragdrop="nsDragAndDrop.drop(event, dnd)" />
+  <vbox id="container" flex="1" ondragover="nsDragAndDrop.dragOver(event, dnd)" ondragdrop="nsDragAndDrop.drop(event, dnd)">
+		<description style="position: fixed; top: 50px; left: 50px;">My Book (Click to Rename)</description>
+	</vbox>
 </page>
