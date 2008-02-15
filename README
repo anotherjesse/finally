@@ -1,0 +1,38 @@
+One part taboo, one part mini-mapper, one part flock shelf, one part scrap book, one part netvibes
+
+The goal is to be extensible ala greasemonkey (easy to add scripts to enhance without restarting),
+providing wrappers around the technologies that aren't "standard" (xbl/rdf/dnd) so that enhancements
+can be done by as many people as possible.
+
+TODO:
+
+  * pattern for inheritance/reuse of xbls (lots of redundancy)
+  * rdf is currently in memory - needs to be serialized
+  * pattern for scraplets to determine DND content
+
+CONTENT:
+  * photos
+    * screenshots from page
+    * flickr
+    * smugmug
+    * photobucket
+    * ...
+  * movies
+    * youtube
+    * metacafe
+    * ...
+  * web pages
+    * taboo
+    * delicious
+    * ...
+  * addresses
+  * text/html
+  * people
+  * micro-format content
+  * music
+  * products
+    * books
+  * email
+  * chat
+  * twitter
+  * widgets (open social?)
