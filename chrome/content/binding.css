@@ -1,12 +1,14 @@
 note {
   -moz-binding: url("note.xml#note");
+  position: fixed;
 }
 
 note[kind=image] {
   -moz-binding: url("note.xml#image");
 }
 
-note vbox {
+note[kind=flickr] {
+  -moz-binding: url("note.xml#flickr");
 }
 
 note image.icon {
@@ -26,10 +28,13 @@ note[kind=image] image.icon {
   list-style-image: url("chrome://books/skin/famfamfam/image.png");
 }
 
+note[kind=flickr] image.icon {
+  list-style-image: url("chrome://books/skin/famfamfam/image.png");
+}
+
 note {
   font-size: 10px;
 }
-
 
 note .extended {
   display: none;
@@ -37,4 +42,12 @@ note .extended {
 
 note:hover .extended {
   display: inherit;
+}
+
+note:hover {
+  z-index: 42;
+}
+
+note[kind=flickr]:hover img[anonid=thumb] {
+  display: none;
 }

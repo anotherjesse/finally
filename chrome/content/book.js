@@ -30,6 +30,8 @@ var dnd = {
     try {
       var data;
       
+      console.log(dropData.data)
+      
       try {
         var contentDetector = new nsContentDetector();
         var target = asession.sourceNode;
@@ -40,6 +42,17 @@ var dnd = {
             src: contentDetector.imageURL,
             kind: 'image'
           }
+
+          // http://farm{farm-id}.static.flickr.com/{server-id}/{id}_{secret}_[mstb].jpg
+          if (data.src.match(/http:\/\/farm(\d+).static.flickr.com\/(\d+)\/(\d+)_([a-z0-9]*)_?([^_.]*)\.jpg/)) {
+            var match = data.src.match(/http:\/\/farm(\d+).static.flickr.com\/(\d+)\/(\d+)_([a-z0-9]*)_?([^_.]*)\.jpg/);
+            data.kind = 'flickr';
+            data.farm = match[1];
+            data.server = match[2];
+            data.photo = match[3];
+            data.secret = match[4];
+          }
+          console.log(data)
         }        
       } catch (e) {
         console.log('errors with contentDetector', e)
