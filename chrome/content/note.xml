@@ -110,7 +110,6 @@
       <xul:hbox>
         <html:img anonid="thumb" class="thumb" />
         <xul:vbox class="extended">
-          <xul:label anonid="name" />
           <html:img anonid="photo" />
         </xul:vbox>
       </xul:hbox>
