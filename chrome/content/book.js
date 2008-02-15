@@ -29,11 +29,7 @@ var dnd = {
   onDragOver: function(event,flavor,session) {},
   onDrop: function(event,dropData,asession) {
     try {
-      var note = document.createElement('note');
-      var data = {};
-      note.style.position = 'fixed';
-      note.style.left = event.clientX-12 + 'px';
-      note.style.top = event.clientY-12 + 'px';
+      var data;
       if (dropData.flavour.contentType == "text/html") {
         data = {description: dropData.data, kind: 'html'};
       }
@@ -44,6 +40,9 @@ var dnd = {
         var bm = dropData.data.split("\n");
         data = {name: bm[1], description: bm[0], kind: 'link'};
       }
+      data.top = event.clientY-12 + 'px';
+      data.left = event.clientX-12 + 'px';
+
       rdf.add(data)
     } catch(e) {
       console.log(e);

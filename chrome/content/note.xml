@@ -33,6 +33,9 @@
 
         this.set('name', 'value', prop('name'));
         this.set('description', 'value', prop('description'));
+        this.style.top = prop('top');
+        this.style.left = prop('left');
+        this.style.position = 'fixed';
       ]]></constructor>
       <destructor><![CDATA[
         this.wrap = null;
