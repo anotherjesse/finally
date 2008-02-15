@@ -17,40 +17,22 @@ const Cu = Components.utils;
 
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 
+const rdfMethods = ['AddObserver', 'ArcLabelsIn', 'ArcLabelsOut', 'Assert', 
+  'beginUpdateBatch', 'Change', 'DoCommand', 'endUpdateBatch', 
+  'GetAllCmds', 'GetAllResources', 'GetSource', 'GetSources', 'GetTarget', 
+  'GetTargets', 'hasArcIn', 'hasArcOut', 'HasAssertion',
+  'IsCommandEnabled', 'Move', 'RemoveObserver', 'Unassert'];
+
 function RDF() {
-  this.ds = Cc["@mozilla.org/rdf/datasource;1?name=in-memory-datasource"]
+  var ds = Cc["@mozilla.org/rdf/datasource;1?name=in-memory-datasource"]
     .createInstance(Ci.nsIRDFDataSource);
+  
+  this.URI = "rdf:books";
+
+  rdfMethods.forEach(function(method) {
+    this[method] = function() { return ds[method].apply(ds, arguments); }
+  }, this);
 }
-
-/******************************************************************************
- * nsIRDFDataSource
- ******************************************************************************/
-
-RDF.prototype.GetSource        = function() { return this.ds.GetSource.apply(this.ds, arguments); }
-RDF.prototype.GetSources       = function() { return this.ds.GetSources.apply(this.ds, arguments); }
-RDF.prototype.GetTarget        = function() { return this.ds.GetTarget.apply(this.ds, arguments); }
-RDF.prototype.GetTargets       = function() { return this.ds.GetTargets.apply(this.ds, arguments); }
-RDF.prototype.Assert           = function() { return this.ds.Assert.apply(this.ds, arguments); }
-RDF.prototype.Unassert         = function() { return this.ds.Unassert.apply(this.ds, arguments); }
-RDF.prototype.Change           = function() { return this.ds.Change.apply(this.ds, arguments); }
-RDF.prototype.Move             = function() { return this.ds.Move.apply(this.ds, arguments); }
-RDF.prototype.HasAssertion     = function() { return this.ds.HasAssertion.apply(this.ds, arguments); }
-RDF.prototype.AddObserver      = function() { return this.ds.AddObserver.apply(this.ds, arguments); }
-RDF.prototype.RemoveObserver   = function() { return this.ds.RemoveObserver.apply(this.ds, arguments); }
-RDF.prototype.ArcLabelsIn      = function() { return this.ds.ArcLabelsIn.apply(this.ds, arguments); }
-RDF.prototype.ArcLabelsOut     = function() { return this.ds.ArcLabelsOut.apply(this.ds, arguments); }
-RDF.prototype.GetAllResources  = function() { return this.ds.GetAllResources.apply(this.ds, arguments); }
-RDF.prototype.IsCommandEnabled = function() { return this.ds.IsCommandEnabled.apply(this.ds, arguments); } 
-RDF.prototype.DoCommand        = function() { return this.ds.DoCommand.apply(this.ds, arguments); }
-RDF.prototype.GetAllCmds       = function() { return this.ds.GetAllCmds.apply(this.ds, arguments); }
-RDF.prototype.hasArcIn         = function() { return this.ds.hasArcIn.apply(this.ds, arguments); }
-RDF.prototype.hasArcOut        = function() { return this.ds.hasArcOut.apply(this.ds, arguments); }
-RDF.prototype.beginUpdateBatch = function() { return this.ds.beginUpdateBatch.apply(this.ds, arguments); }
-RDF.prototype.endUpdateBatch   = function() { return this.ds.endUpdateBatch.apply(this.ds, arguments); }
-RDF.prototype.Flush            = function() { return this.ds.Flush.apply(this.ds, arguments); }
-RDF.prototype.FlushTo          = function() { return this.ds.FlushTo.apply(this.ds, arguments); }
-RDF.prototype.Init             = function() { return this.ds.Init.apply(this.ds, arguments); }
-RDF.prototype.Refresh          = function() { return this.ds.Refresh.apply(this.ds, arguments); }
 
 /******************************************************************************
  * XPCOM Registration
