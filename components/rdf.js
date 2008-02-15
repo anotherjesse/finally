@@ -17,6 +17,10 @@ const Cu = Components.utils;
 
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 
+/******************************************************************************
+ * nsIRDFDataSource
+ ******************************************************************************/
+
 const rdfMethods = ['AddObserver', 'ArcLabelsIn', 'ArcLabelsOut', 'Assert', 
   'beginUpdateBatch', 'Change', 'DoCommand', 'endUpdateBatch', 
   'GetAllCmds', 'GetAllResources', 'GetSource', 'GetSources', 'GetTarget', 

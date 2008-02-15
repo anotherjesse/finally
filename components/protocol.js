@@ -17,11 +17,11 @@ const Cu = Components.utils;
 
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 
-function handler() {}
-
 /******************************************************************************
  * nsIProtocolHandler
  ******************************************************************************/
+
+function handler() {}
 
 handler.prototype.scheme = 'books';
 handler.prototype.defaultPort = -1;
@@ -49,7 +49,6 @@ handler.prototype.classDescription  = "books psuedo protocol";
 handler.prototype.classID           = Components.ID("{b6cf7410-db5e-11dc-95ff-0800200c9a66}");
 handler.prototype.contractID        = "@mozilla.org/network/protocol;1?name=books";
 handler.prototype.QueryInterface    = XPCOMUtils.generateQI([Ci.nsIProtocolHandler, Ci.nsISupports]);
-
 
 function NSGetModule(compMgr, fileSpec) {
   return XPCOMUtils.generateModule([handler]);
