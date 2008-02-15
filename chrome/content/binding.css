@@ -15,7 +15,7 @@ note image.icon {
   margin: 4px;
 }
 
-note.url image.icon {
+note[kind=link] image.icon {
   list-style-image: url("chrome://books/skin/famfamfam/link.png");
 }
 
