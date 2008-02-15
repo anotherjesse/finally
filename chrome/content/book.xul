@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
 <?xml-stylesheet href="chrome://books/skin/book.css" type="text/css"?>
-<?xml-stylesheet href="binding.css" type="text/css"?>
+<?xml-stylesheet href="chrome://books/content/binding.css" type="text/css"?>
 
 <page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   title="Book">
