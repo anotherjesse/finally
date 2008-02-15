@@ -22,14 +22,9 @@ function RDF() {
     .createInstance(Ci.nsIRDFDataSource);
 }
 
-RDF.prototype = {
-  classDescription: "books rdf",
-  classID:          Components.ID("{d13c7990-db6a-11dc-95ff-0800200c9a66}"),
-  contractID:       '@mozilla.org/rdf/datasource;1?name=books',
-  QueryInterface: XPCOMUtils.generateQI(
-    [Components.interfaces.nsIRDFDataSource,
-     Components.interfaces.nsISupports]),
-};
+/******************************************************************************
+ * nsIRDFDataSource
+ ******************************************************************************/
 
 RDF.prototype.GetSource        = function() { return this.ds.GetSource.apply(this.ds, arguments); }
 RDF.prototype.GetSources       = function() { return this.ds.GetSources.apply(this.ds, arguments); }
@@ -56,6 +51,15 @@ RDF.prototype.Flush            = function() { return this.ds.Flush.apply(this.ds
 RDF.prototype.FlushTo          = function() { return this.ds.FlushTo.apply(this.ds, arguments); }
 RDF.prototype.Init             = function() { return this.ds.Init.apply(this.ds, arguments); }
 RDF.prototype.Refresh          = function() { return this.ds.Refresh.apply(this.ds, arguments); }
+
+/******************************************************************************
+ * XPCOM Registration
+ ******************************************************************************/
+
+RDF.prototype.classDescription  = "books rdf";
+RDF.prototype.classID           = Components.ID("{d13c7990-db6a-11dc-95ff-0800200c9a66}");
+RDF.prototype.contractID        = '@mozilla.org/rdf/datasource;1?name=books';
+RDF.prototype.QueryInterface    = XPCOMUtils.generateQI([Ci.nsIRDFDataSource, Ci.nsISupports]);
 
 function NSGetModule(compMgr, fileSpec) {
   return XPCOMUtils.generateModule([RDF]);
