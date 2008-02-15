@@ -60,7 +60,10 @@
         <xul:image anonid="image" class="icon" />
         <xul:vbox class="extended">
           <xul:label anonid="name" />
-          <xul:image anonid="photo" />
+          <xul:hbox>
+            <html:img anonid="photo" />
+            <xul:spacer flex="1" />
+          </xul:hbox>
         </xul:vbox>
       </xul:hbox>
     </content>
