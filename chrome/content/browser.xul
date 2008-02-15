@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="books-overlay">
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="finally-overlay">
   <script type="text/javascript"><![CDATA[ 
 
     function loadJS() {
@@ -7,7 +7,7 @@
                                .getService(Components.interfaces.mozIJSSubScriptLoader);
 
       var scripts = [
-        "chrome://books/content/browser.js"
+        "chrome://finally/content/browser.js"
       ];
 
       for (var i = 0; i < scripts.length; i++) {

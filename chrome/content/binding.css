@@ -12,7 +12,7 @@ note[kind=flickr] {
 }
 
 note image.icon {
-  list-style-image: url("chrome://books/skin/famfamfam/text_dropcaps.png");
+  list-style-image: url("chrome://finally/skin/famfamfam/text_dropcaps.png");
   min-width: 16px;
   max-width: 16px;
   min-height: 16px;
@@ -21,15 +21,15 @@ note image.icon {
 }
 
 note[kind=link] image.icon {
-  list-style-image: url("chrome://books/skin/famfamfam/link.png");
+  list-style-image: url("chrome://finally/skin/famfamfam/link.png");
 }
 
 note[kind=image] image.icon {
-  list-style-image: url("chrome://books/skin/famfamfam/image.png");
+  list-style-image: url("chrome://finally/skin/famfamfam/image.png");
 }
 
 note[kind=flickr] image.icon {
-  list-style-image: url("chrome://books/skin/famfamfam/image.png");
+  list-style-image: url("chrome://finally/skin/famfamfam/image.png");
 }
 
 note {

@@ -2,13 +2,12 @@
     
 <RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
   <RDF:Description RDF:about="urn:mozilla:install-manifest">
-    <em:name>Books</em:name>
-    <em:id>books@overstimulate.com</em:id>
+    <em:name>Finally</em:name>
+    <em:id>finally@overstimulate.com</em:id>
     <em:version>0.0.0.0.0.1</em:version>
     <em:description>the extension I always wanted to do but never had the time for</em:description>
     <em:creator>Jesse Andrews; http://overstimulate.com</em:creator>
-    <em:homepageURL>http://overstimulate.com/books</em:homepageURL>
-    <em:optionsURL>chrome://books/content/config.xul</em:optionsURL>
+    <em:homepageURL>http://overstimulate.com/projects/finally</em:homepageURL>
     <em:targetApplication>
       <RDF:Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
@@ -24,7 +23,7 @@
       </Description>
     </em:targetApplication>
     <em:file>
-      <RDF:Description RDF:about="urn:mozilla:extension:file:books">
+      <RDF:Description RDF:about="urn:mozilla:extension:file:finally">
         <em:package>content/</em:package>
       </RDF:Description>
     </em:file>

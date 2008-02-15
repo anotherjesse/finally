@@ -29,7 +29,7 @@ handler.prototype.protocolFlags = 0;
 handler.prototype.allowPort = function (port, scheme) { return false; }
 handler.prototype.newChannel = function (URI) {
   var ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
-  return ios.newChannel("chrome://books/content/book.xul", null, null);
+  return ios.newChannel("chrome://finally/content/book.xul", null, null);
 }
 
 handler.prototype.newURI =
