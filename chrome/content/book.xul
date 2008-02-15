@@ -3,17 +3,17 @@
 <?xml-stylesheet href="chrome://books/skin/book.css" type="text/css"?>
 <?xml-stylesheet href="chrome://books/content/binding.css" type="text/css"?>
 
-<page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+<page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   title="Book">
 
   <script type="application/x-javascript" src="chrome://global/content/nsDragAndDrop.js" />
   <script type="application/x-javascript" src="chrome://global/content/nsTransferable.js" />
-  <script type="application/x-javascript" src="chrome://browser/content/utilityOverlay.js" /> 
+  <script type="application/x-javascript" src="chrome://browser/content/utilityOverlay.js" />
   <script type="application/x-javascript" src="chrome://books/content/jquery-1.2.3.js" />
   <script type="application/x-javascript" src="chrome://books/content/book.js" />
 
-  <vbox id="container" flex="1" 
-    ondragover="nsDragAndDrop.dragOver(event, dnd)" 
+  <vbox id="container" flex="1"
+    ondragover="nsDragAndDrop.dragOver(event, dnd)"
     ondragdrop="nsDragAndDrop.drop(event, dnd)"
     datasources="rdf:books" ref="urn:root" flags="dont-build-content">
     <template>

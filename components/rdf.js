@@ -21,16 +21,16 @@ Cu.import("resource://gre/modules/XPCOMUtils.jsm");
  * nsIRDFDataSource
  ******************************************************************************/
 
-const rdfMethods = ['AddObserver', 'ArcLabelsIn', 'ArcLabelsOut', 'Assert', 
-  'beginUpdateBatch', 'Change', 'DoCommand', 'endUpdateBatch', 
-  'GetAllCmds', 'GetAllResources', 'GetSource', 'GetSources', 'GetTarget', 
+const rdfMethods = ['AddObserver', 'ArcLabelsIn', 'ArcLabelsOut', 'Assert',
+  'beginUpdateBatch', 'Change', 'DoCommand', 'endUpdateBatch',
+  'GetAllCmds', 'GetAllResources', 'GetSource', 'GetSources', 'GetTarget',
   'GetTargets', 'hasArcIn', 'hasArcOut', 'HasAssertion',
   'IsCommandEnabled', 'Move', 'RemoveObserver', 'Unassert'];
 
 function RDF() {
   var ds = Cc["@mozilla.org/rdf/datasource;1?name=in-memory-datasource"]
     .createInstance(Ci.nsIRDFDataSource);
-  
+
   this.URI = "rdf:books";
 
   rdfMethods.forEach(function(method) {
