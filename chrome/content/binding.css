@@ -2,8 +2,11 @@ note {
   -moz-binding: url("note.xml#note");
 }
 
+note[kind=image] {
+  -moz-binding: url("note.xml#image");
+}
+
 note vbox {
-  max-width: 210px;
 }
 
 note image.icon {
@@ -19,13 +22,14 @@ note[kind=link] image.icon {
   list-style-image: url("chrome://books/skin/famfamfam/link.png");
 }
 
+note[kind=image] image.icon {
+  list-style-image: url("chrome://books/skin/famfamfam/image.png");
+}
+
 note {
   font-size: 10px;
 }
 
-note label {
-  max-width: 200px;
-}
 
 note .extended {
   display: none;

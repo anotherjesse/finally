@@ -7,9 +7,7 @@ var rdf = new (function() {
     const NSRDF = function(name) { return RDFS.GetResource('http://home.netscape.com/NC-rdf#'+name); }
 
     var ds = RDFS.GetDataSource('rdf:books', false);
-    console.log(ds)
     var bag = RDFCU.MakeBag(ds, RDFS.GetResource('urn:root'));
-    console.log(bag)
 
     this.add = function(data) {
       var resource = RDFS.GetAnonymousResource();
@@ -28,17 +26,29 @@ var rdf = new (function() {
 var dnd = {
   onDragOver: function(event,flavor,session) {},
   onDrop: function(event,dropData,asession) {
+    var contentDetector = new nsContentDetector();
+    var target = asession.sourceNode;
+    contentDetector.setTarget(target);
+
     try {
-      var data;
-      if (dropData.flavour.contentType == "text/html") {
-        data = {description: dropData.data, kind: 'html'};
+      var data = {};
+      
+      if (contentDetector.onImage) {
+        data.name = target.alt;
+        data.src = contentDetector.imageURL;
+        data.kind = 'image'
       }
-      if (dropData.flavour.contentType == "text/unicode") {
-        data = {description: dropData.data, kind: 'text'};
-      }
-      if (dropData.flavour.contentType == "text/x-moz-url") {
-        var bm = dropData.data.split("\n");
-        data = {name: bm[1], description: bm[0], kind: 'link'};
+      else {
+        if (dropData.flavour.contentType == "text/html") {
+          data = {description: dropData.data, kind: 'html'};
+        }
+        if (dropData.flavour.contentType == "text/unicode") {
+          data = {description: dropData.data, kind: 'text'};
+        }
+        if (dropData.flavour.contentType == "text/x-moz-url") {
+          var bm = dropData.data.split("\n");
+          data = {name: bm[1], description: bm[0], kind: 'link'};
+        }        
       }
       data.top = event.clientY-12 + 'px';
       data.left = event.clientX-12 + 'px';

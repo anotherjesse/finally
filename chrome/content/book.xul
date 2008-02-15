@@ -9,6 +9,7 @@
   <script type="application/x-javascript" src="chrome://global/content/nsDragAndDrop.js" />
   <script type="application/x-javascript" src="chrome://global/content/nsTransferable.js" />
   <script type="application/x-javascript" src="chrome://browser/content/utilityOverlay.js" />
+  <script type="application/x-javascript" src="chrome://books/content/mozextras.js" />
   <script type="application/x-javascript" src="chrome://books/content/jquery-1.2.3.js" />
   <script type="application/x-javascript" src="chrome://books/content/book.js" />
 

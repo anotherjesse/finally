@@ -53,4 +53,56 @@
       </method>
     </implementation>
   </binding>
+  
+  <!-- FIXME: inheritance/base note -->
+  <binding id="image">
+    <content>
+      <xul:hbox>
+        <xul:image anonid="image" class="icon" />
+        <xul:vbox class="extended">
+          <xul:label anonid="name" />
+          <xul:image anonid="photo" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+    <implementation>
+      <constructor><![CDATA[
+
+        const Cc = Components.classes;
+        const Ci = Components.interfaces;
+        const RDFS = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
+        const NSRDF = function(name) { return RDFS.GetResource('http://home.netscape.com/NC-rdf#'+name); }
+        var ds = RDFS.GetDataSource('rdf:books', false);
+
+        var resource = RDFS.GetResource(this.id);
+
+        function prop(property) {
+          var target = ds.GetTarget(resource, NSRDF(property), true);
+          if (target instanceof Components.interfaces.nsIRDFLiteral) {
+            return target.Value;
+          }
+        }
+
+        this.set('name', 'value', prop('name'));
+        this.set('photo', 'src', prop('src'));
+        this.style.top = prop('top');
+        this.style.left = prop('left');
+        this.style.position = 'fixed';
+      ]]></constructor>
+      <destructor><![CDATA[
+        this.wrap = null;
+      ]]></destructor>
+      <method name="set">
+        <parameter name="anonid" />
+        <parameter name="attribute" />
+        <parameter name="value" />
+        <body>
+          if (value) {
+            document.getAnonymousElementByAttribute(this, 'anonid', anonid)
+                    .setAttribute(attribute, value);
+          }
+        </body>
+      </method>
+    </implementation>
+  </binding>
 </bindings>
