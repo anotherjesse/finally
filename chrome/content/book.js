@@ -34,3 +34,13 @@ var dnd = {
     return flavors;
   }
 }
+
+
+var book = {
+  save: function() {
+    console.log("Saving...");
+  },
+  load: function(loadPath) {
+    
+  } 
+}

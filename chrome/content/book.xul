@@ -12,6 +12,14 @@
   <script type="application/x-javascript" src="chrome://books/content/jquery-1.2.3.js" />
   <script type="application/x-javascript" src="chrome://books/content/book.js" />
   <vbox id="container" flex="1" ondragover="nsDragAndDrop.dragOver(event, dnd)" ondragdrop="nsDragAndDrop.drop(event, dnd)">
-		<description style="position: fixed; top: 50px; left: 50px;">My Book (Click to Rename)</description>
+		<vbox style="position: fixed;  top: 30px; left: 30px;">
+			<vbox>
+				<hbox><description style="font-size: 15px;">Book of Love</description></hbox>
+				<hbox>
+					<button label="Save" oncommand="book.save();"/>
+					<button label="Load..."/>
+				</hbox>
+			</vbox>
+		</vbox>
 	</vbox>
 </page>
