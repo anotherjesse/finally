@@ -34,3 +34,23 @@ var dnd = {
     return flavors;
   }
 }
+
+$(function() {
+  try {
+    const Cc = Components.classes;
+    const Ci = Components.interfaces;
+    const RDFS = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
+    const NSRDF = function(name) { return RDFS.GetResource('http://home.netscape.com/NC-rdf#'+name); }
+
+    var ds = RDFS.GetDataSource('rdf:books', false);
+
+    var resource = RDFS.GetResource('urn:test');
+    ds.Assert(resource, NSRDF('foo'), RDFS.GetLiteral('bar'), true);
+    console.log("asssertion test passes:", ds.HasAssertion(resource, NSRDF('foo'), RDFS.GetLiteral('bar'), true));
+    console.log("false asssertion test passes:", !ds.HasAssertion(resource, NSRDF('foo'), RDFS.GetLiteral('baz'), true));
+  } catch (e) {
+    console.log('erorr:', e)
+    alert(e)
+  }
+
+})
