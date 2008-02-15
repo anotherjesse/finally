@@ -36,3 +36,10 @@ CONTENT:
   * chat
   * twitter
   * widgets (open social?)
+  
+What works:
+
+  * dnd a flickr picture on to the page
+  * dnd a picture on to the page
+  * dnd a link (stored but bad ui)
+  * dnd html snippet (stored but bad ui)
