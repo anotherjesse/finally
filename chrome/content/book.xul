@@ -16,7 +16,7 @@
   <vbox id="container" flex="1"
     ondragover="nsDragAndDrop.dragOver(event, dnd)"
     ondragdrop="nsDragAndDrop.drop(event, dnd)"
-    datasources="rdf:books" ref="urn:root" flags="dont-build-content">
+    datasources="rdf:books" flags="dont-build-content">
     <template>
       <rule>
         <note uri="rdf:*" kind="rdf:http://home.netscape.com/NC-rdf#kind"/>
