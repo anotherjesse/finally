@@ -1,6 +1,13 @@
 if (typeof(console)=="undefined") {
   var t = Components.classes['@mozilla.org/consoleservice;1'].getService(Components.interfaces.nsIConsoleService)
-  log = function() { t.logStringMessage(arguments.join(' ')); }
+  log = function() {
+    var out = ''
+    for (var i=0; i<arguments.length; i++) {
+      out += arguments[i] + ' ';
+    }
+
+    t.logStringMessage(out);
+  }
 }
 else {
   log = console.log;
