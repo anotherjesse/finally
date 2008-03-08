@@ -28,8 +28,22 @@ const rdfMethods = ['AddObserver', 'ArcLabelsIn', 'ArcLabelsOut', 'Assert',
   'IsCommandEnabled', 'Move', 'RemoveObserver', 'Unassert'];
 
 function RDF() {
-  var ds = Cc["@mozilla.org/rdf/datasource;1?name=in-memory-datasource"]
-    .createInstance(Ci.nsIRDFDataSource);
+  var file = Cc['@mozilla.org/file/directory_service;1']
+    .getService(Ci.nsIProperties).get('ProfD', Ci.nsILocalFile);
+
+  file.append('finally.rdf');
+
+  var ios = Cc['@mozilla.org/network/io-service;1']
+    .getService(Ci.nsIIOService);
+
+  var fileHandler = ios.getProtocolHandler('file')
+    .QueryInterface(Ci.nsIFileProtocolHandler);
+
+  var spec = fileHandler.getURLSpecFromFile(file);
+
+  var RDFS = Cc["@mozilla.org/rdf/rdf-service;1"]
+    .getService(Ci.nsIRDFService);
+  var ds = RDFS.GetDataSourceBlocking(spec);
 
   this.URI = "rdf:books";
 

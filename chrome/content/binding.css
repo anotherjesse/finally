@@ -11,6 +11,10 @@ note[kind=flickr] {
   -moz-binding: url("note.xml#flickr");
 }
 
+note[kind=book] {
+  -moz-binding: url("note.xml#book");
+}
+
 note image.icon {
   list-style-image: url("chrome://finally/skin/famfamfam/text_dropcaps.png");
   min-width: 16px;
@@ -19,6 +23,11 @@ note image.icon {
   max-height: 16px;
   margin: 4px;
 }
+
+note[kind=book] image.icon {
+  list-style-image: url("chrome://finally/skin/famfamfam/book.png");
+}
+
 
 note[kind=link] image.icon {
   list-style-image: url("chrome://finally/skin/famfamfam/link.png");
@@ -30,6 +39,16 @@ note[kind=image] image.icon {
 
 note[kind=flickr] image.icon {
   list-style-image: url("chrome://finally/skin/famfamfam/image.png");
+}
+
+note[kind=image] img  {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+note[kind=image]:hover img  {
+  max-width: 300px;
+  max-height: 300px;
 }
 
 note {

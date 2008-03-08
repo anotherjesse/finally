@@ -4,7 +4,7 @@
 <?xml-stylesheet href="chrome://finally/content/binding.css" type="text/css"?>
 
 <page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-  title="Book">
+  xmlns:html="http://www.w3.org/1999/xhtml" title="Book">
 
   <script type="application/x-javascript" src="chrome://global/content/nsDragAndDrop.js" />
   <script type="application/x-javascript" src="chrome://global/content/nsTransferable.js" />
@@ -23,5 +23,5 @@
       </rule>
     </template>
 	</vbox>
-
+	
 </page>

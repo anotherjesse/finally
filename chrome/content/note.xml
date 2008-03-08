@@ -56,16 +56,7 @@
   <!-- FIXME: inheritance/base note -->
   <binding id="image">
     <content>
-      <xul:hbox>
-        <xul:image anonid="image" class="icon" />
-        <xul:vbox class="extended">
-          <xul:label anonid="name" />
-          <xul:hbox>
-            <html:img anonid="photo" />
-            <xul:spacer flex="1" />
-          </xul:hbox>
-        </xul:vbox>
-      </xul:hbox>
+      <html:img anonid="photo" />
     </content>
     <implementation>
       <constructor><![CDATA[
@@ -85,7 +76,6 @@
           }
         }
 
-        this.set('name', 'value', prop('name'));
         this.set('photo', 'src', prop('src'));
         this.style.top = prop('top');
         this.style.left = prop('left');
@@ -141,6 +131,55 @@
           'http://farm'+prop('farm')+'.static.flickr.com/'+prop('server')+'/'+prop('photo')+'_'+prop('secret')+'_t.jpg');
         this.set('photo', 'src', 
           'http://farm'+prop('farm')+'.static.flickr.com/'+prop('server')+'/'+prop('photo')+'_'+prop('secret')+'_m.jpg');
+      ]]></constructor>
+      <destructor><![CDATA[
+        this.wrap = null;
+      ]]></destructor>
+      <method name="set">
+        <parameter name="anonid" />
+        <parameter name="attribute" />
+        <parameter name="value" />
+        <body>
+          if (value) {
+            document.getAnonymousElementByAttribute(this, 'anonid', anonid)
+                    .setAttribute(attribute, value);
+          }
+        </body>
+      </method>
+    </implementation>
+  </binding>
+  
+  
+  <binding id="book">
+    <content>
+      <xul:hbox>
+        <html:img anonid="thumb" class="thumb" />
+        <xul:vbox class="extended">
+          <html:img anonid="photo" />
+        </xul:vbox>
+      </xul:hbox>
+    </content>
+    <implementation>
+      <constructor><![CDATA[
+
+        const Cc = Components.classes;
+        const Ci = Components.interfaces;
+        const RDFS = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
+        const NSRDF = function(name) { return RDFS.GetResource('http://home.netscape.com/NC-rdf#'+name); }
+        var ds = RDFS.GetDataSource('rdf:books', false);
+
+        var resource = RDFS.GetResource(this.id);
+
+        function prop(property) {
+          var target = ds.GetTarget(resource, NSRDF(property), true);
+          if (target instanceof Components.interfaces.nsIRDFLiteral) {
+            return target.Value;
+          }
+        }
+
+        this.style.top = prop('top');
+        this.style.left = prop('left');
+        this.set('thumb', 'src', prop('preview'))
       ]]></constructor>
       <destructor><![CDATA[
         this.wrap = null;

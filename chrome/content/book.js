@@ -15,6 +15,10 @@ var rdf = new (function() {
         ds.Assert(resource, NSRDF(k), RDFS.GetLiteral(data[k]), true);
       }
       bag.AppendElement(resource);
+      
+      return function(k,v) {
+        ds.Assert(resource, NSRDF(k), RDFS.GetLiteral(v), true);
+      }
     }
   }
   catch (e) {
@@ -66,13 +70,26 @@ var dnd = {
         }
         if (dropData.flavour.contentType == "text/x-moz-url") {
           var bm = dropData.data.split("\n");
-          data = {name: bm[1], description: bm[0], kind: 'link'};
-        }        
+          data = {name: bm[1], url: bm[0], kind: 'link'};
+          if (data.url.match('amazon.com') && !data.url.match('rate-this')) {
+            if (data.url.match(/\/(\d{9}[0-9Xx])(\/|\?|$)/)) {
+              data.isbn = data.url.match(/\/(\d{9}[0-9Xx])(\/|\?|$)/)[1];
+              data.kind = 'book';
+            }
+          }
+        }
       }
       data.top = event.clientY-12 + 'px';
       data.left = event.clientX-12 + 'px';
 
-      rdf.add(data)
+      var update = rdf.add(data);
+      if (data.kind == 'book') {
+        var url = "http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&AWSAccessKeyId=1JZTJ2HB4Y31HSBCMMR2&" + 
+                  "Operation=ItemLookup&ResponseGroup=Medium&MerchantId=ATVPDKIKX0DER&ItemId=" + data.isbn;
+        $.get(url, {}, function(data, txt) {
+          update('preview', $('SmallImage URL', data)[0].textContent);
+        });
+      }
     } catch(e) {
       console.log(e);
     }
