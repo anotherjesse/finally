@@ -1,3 +1,11 @@
+if (typeof(console)=="undefined") {
+  var t = Components.classes['@mozilla.org/consoleservice;1'].getService(Components.interfaces.nsIConsoleService)
+  log = function() { t.logStringMessage(arguments.join(' ')); }
+}
+else {
+  log = console.log;
+}
+
 var rdf = new (function() {
   try {
     const Cc = Components.classes;
@@ -22,7 +30,7 @@ var rdf = new (function() {
     }
   }
   catch (e) {
-    console.log('error', e)
+    log('error', e)
   }
 
 })();
@@ -34,7 +42,7 @@ var dnd = {
     try {
       var data;
       
-      console.log(dropData.data)
+      log(dropData.data)
       
       try {
         var contentDetector = new nsContentDetector();
@@ -56,10 +64,10 @@ var dnd = {
             data.photo = match[3];
             data.secret = match[4];
           }
-          console.log(data)
+          log(data)
         }        
       } catch (e) {
-        console.log('errors with contentDetector', e)
+        log('errors with contentDetector', e)
       }
       if (!data) {
         if (dropData.flavour.contentType == "text/html") {
@@ -91,7 +99,7 @@ var dnd = {
         });
       }
     } catch(e) {
-      console.log(e);
+      log(e);
     }
   },
   onDragStart: function(event, transferData, action) {},
