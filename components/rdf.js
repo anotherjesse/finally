@@ -33,9 +33,6 @@ const rdfMethods = ['AddObserver', 'ArcLabelsIn', 'ArcLabelsOut',
 
 function RDF() {
 
-  Cc['@mozilla.org/observer-service;1'].getService(Ci.nsIObserverService)
-    .addObserver(this, 'quit-application', false);
-
   var file = Cc['@mozilla.org/file/directory_service;1']
     .getService(Ci.nsIProperties).get('ProfD', Ci.nsILocalFile);
   file.append('finally.rdf');
