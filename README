@@ -7,8 +7,8 @@ can be done by as many people as possible.
 TODO:
 
   * pattern for inheritance/reuse of xbls (lots of redundancy)
-  * rdf is currently in memory - needs to be serialized
   * pattern for scraplets to determine DND content
+  * how to hanlde multiple scraplets having an opinion on the dropped content
 
 CONTENT:
   * photos
